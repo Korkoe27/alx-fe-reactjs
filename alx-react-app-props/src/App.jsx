@@ -5,7 +5,7 @@ import MainContent from './components/MainContent';
 import Header from './components/Header';
 import './App.css'
 import UserProfile from './components/UserProfile';
-import UserContext from './components/UserContext';
+import UserContext from './UserContext';
 
 function App() {
 
