@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 
 import WelcomeMessage from './components/WelcomeMessage';
 import Footer from './components/Footer';
@@ -7,7 +7,7 @@ import Header from './components/Header';
 import './App.css'
 import UserProfile from './components/UserProfile';
 import Counter from './components/Counter';
-import UserContext from './UserContext';
+import UserContext from './components/UserContext';
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
     <div className="">
       <Header />
       <UserContext.Provider value={{ userData, setUser: setUserData }}>
-        <UserProfile userData={userData} />
+        <UserProfile />
       </UserContext.Provider>
       <WelcomeMessage />
       <MainContent />
