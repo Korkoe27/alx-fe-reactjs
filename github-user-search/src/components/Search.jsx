@@ -25,9 +25,7 @@ const Search = () => {
       const userData = await fetchUserData(trimmedUsername, userLocation, minimumRepositories);
       setUsers(userData.items);
 
-          console.log("Raw data from GitHub API:", userData);
     } catch (err) {
-      console.error("Looks like we cant find the user");
       setUsers([]);
       setError(err.message);
     } finally {
