@@ -1,4 +1,5 @@
 import './App.css'
+import Homepage from './components/Homepage';
 import HomePage from './components/Homepage';
 import RecipeDetail from './components/RecipeDetail'; // make sure this exists
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
