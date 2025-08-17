@@ -1,19 +1,18 @@
-import React from 'react';
-import HomePage from './components/HomePage';
+import './App.css'
+import HomePage from './components/Homepage';
+// import RecipeDetail from './components/RecipeDetail'; // make sure this exists
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md">
-        <div className="container mx-auto px-4 py-4">
-          <h1 className="text-2xl font-bold text-gray-800">Recipe App</h1>
-        </div>
-      </header>
-      <main>
-        <HomePage />
-      </main>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        {/* <Route path="/recipe/:id" element={<RecipeDetail />} /> */}
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;
