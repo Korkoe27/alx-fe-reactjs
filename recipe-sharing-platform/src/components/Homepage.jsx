@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
 
 const Homepage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -42,4 +42,5 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+
+export default Homepage
