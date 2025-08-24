@@ -5,46 +5,48 @@ import * as Yup from 'yup';
 
 // Basic RegistrationForm component using useState
 function RegistrationForm() {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    });
-
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-        
-        // Clear error when user starts typing
-        if (errors[name]) {
-            setErrors(prev => ({
-                ...prev,
-                [name]: ''
-            }));
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+        if (errors.username) {
+            setErrors(prev => ({ ...prev, username: '' }));
+        }
+    };
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        if (errors.email) {
+            setErrors(prev => ({ ...prev, email: '' }));
+        }
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+        if (errors.password) {
+            setErrors(prev => ({ ...prev, password: '' }));
         }
     };
 
     const validateForm = () => {
         const newErrors = {};
         
-        if (!formData.username.trim()) {
+        if (!username.trim()) {
             newErrors.username = 'Username is required';
         }
         
-        if (!formData.email.trim()) {
+        if (!email.trim()) {
             newErrors.email = 'Email is required';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
             newErrors.email = 'Email is invalid';
         }
         
-        if (!formData.password.trim()) {
+        if (!password.trim()) {
             newErrors.password = 'Password is required';
-        } else if (formData.password.length < 6) {
+        } else if (password.length < 6) {
             newErrors.password = 'Password must be at least 6 characters';
         }
         
@@ -61,29 +63,27 @@ function RegistrationForm() {
         }
         
         // Form is valid, process submission
-        console.log('Form submitted with data:', formData);
+        console.log('Form submitted with data:', { username, email, password });
         alert('Registration successful!');
         
         // Reset form
-        setFormData({
-            username: '',
-            email: '',
-            password: ''
-        });
+        setUsername('');
+        setEmail('');
+        setPassword('');
         setErrors({});
     };
 
     return (
         <div style={{ maxWidth: '400px', margin: '0 auto', padding: '20px' }}>
-            <h2>Registration Form (useState)</h2>
+            <h2>Registration Form</h2>
             <form onSubmit={handleSubmit}>
                 <div style={{ marginBottom: '15px' }}>
                     <label style={{ display: 'block', marginBottom: '5px' }}>Username:</label>
                     <input 
                         type="text" 
                         name="username" 
-                        value={formData.username}
-                        onChange={handleChange}
+                        value={username}
+                        onChange={handleUsernameChange}
                         style={{ 
                             width: '100%', 
                             padding: '8px', 
@@ -98,8 +98,8 @@ function RegistrationForm() {
                     <input 
                         type="email" 
                         name="email" 
-                        value={formData.email}
-                        onChange={handleChange}
+                        value={email}
+                        onChange={handleEmailChange}
                         style={{ 
                             width: '100%', 
                             padding: '8px', 
@@ -114,8 +114,8 @@ function RegistrationForm() {
                     <input 
                         type="password" 
                         name="password" 
-                        value={formData.password}
-                        onChange={handleChange}
+                        value={password}
+                        onChange={handlePasswordChange}
                         style={{ 
                             width: '100%', 
                             padding: '8px', 
